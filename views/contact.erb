@@ -6,7 +6,19 @@
 
 <div class="container">
   <%= @contact.job_title %>&#44; <%= @contact.company %><br>
-  <%= @contact.phones.each() { |phone| phone.number() } %><br>
-  <%= @contact.emails.each() { |email| email.email_address } %><br>
-  <%= @contact.address.each() { |address| address.street, address.city, address.state, address.zip} %><br>
+  <% @contact.phones().each() do |phone| %>
+    <%= phone.number() %>
+    <% end %><br>
+
+  <% @contact.emails.each() do |email| %>
+  <%= email.email_address %>
+  <% end %><br>
+
+  <% @contact.addresses.each() do |address| %>
+  <%= address.street %>
+  <%= address.city %>
+  <%= address.state %>
+  <%= address.zip %>
+  <% end %><br>
+
 </div>

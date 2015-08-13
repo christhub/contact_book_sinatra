@@ -2,9 +2,9 @@ require('rspec')
 require('contact')
 
 describe(Contact) do
-  # before() do
-  #   CD.clear()
-  # end
+  before() do
+    Contact.clear()
+  end
 
   describe('#first_name') do
     it('returns the first name') do
@@ -80,6 +80,14 @@ describe(Contact) do
     it('returns the cleared array') do
       test_contact = Contact.new({:first_name => "Bob", :last_name => "Smith", :job_title => "CEO", :company => "McDonalds"})
       expect(Contact.clear()).to(eq([]))
+    end
+  end
+
+  describe('.find') do
+    it('returns the contact by id') do
+      test_contact = Contact.new({:first_name => "Bob", :last_name => "Smith", :job_title => "CEO", :company => "McDonalds"})
+      test_contact.save
+      expect(Contact.find(1)).to(eq(test_contact))
     end
   end
 

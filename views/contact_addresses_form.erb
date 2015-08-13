@@ -3,12 +3,12 @@
 <form action="/addresses/" method="post">
   <input id='id' name='id' type='hidden' value='<%= @contact.id() %>'>
   <label for="street">Street Name: </label>
-  <input type="text" name="street">
+  <input type="text" name="street" class="form-control">
   <label for="city">City: </label>
-  <input type="text" name="city">
+  <input type="text" name="city" class="form-control">
   <label for="state">State: </label>
-  <input type="text" name="state">
+  <input type="text" name="state" class="form-control">
   <label for="zip">Zip Code: </label>
-  <input type="text" name="zip">
+  <input type="text" name="zip" class="form-control">
   <button type="submit">Submit New Contact</button>
 </form>

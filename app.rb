@@ -74,3 +74,26 @@ post('/phones/') do
   @contact.add_phone(@phone)
   redirect("/contacts/#{id_number}")
 end
+
+
+get('/contacts/:id/emails/new/') do
+  @contact = Contact.find(params.fetch('id').to_i)
+  erb(:contact_email_form)
+end
+
+
+post('/emails/') do
+  email_address = params.fetch('email_address')
+  work          = params.fetch('work')
+  id_number     = params.fetch('id')
+  if work == "true"
+    work = true
+  else
+    work = false
+  end
+  @email        = Email.new({:email_address => email_address, :work => work})
+  @email.save
+  @contact = Contact.find(id_number.to_i())
+  @contact.add_email(@email)
+  redirect("/contacts/#{id_number}")
+end

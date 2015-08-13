@@ -1,3 +1,12 @@
-<div class="row text-center">
-  <h2><%= @contact.first_name %></h2>
+<div class="row text-center header">
+  <h2><%= @contact.first_name %> <%= @contact.last_name %></h2>
+</div>
+
+<hr>
+
+<div class="container">
+  <%= @contact.job_title %>&#44; <%= @contact.company %><br>
+  <%= @contact.phones.each() { |phone| phone.number() } %><br>
+  <%= @contact.emails.each() { |email| email.email_address } %><br>
+  <%= @contact.address.each() { |address| address.street, address.city, address.state, address.zip} %><br>
 </div>

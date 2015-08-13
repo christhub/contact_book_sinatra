@@ -8,22 +8,25 @@
   <%= @contact.job_title %>&#44; <%= @contact.company %><br>
   <% @contact.phones().each() do |phone| %>
     <%= phone.number() %>
-    <% end %><br>
-
-  <% @contact.emails.each() do |email| %>
-  <%= email.email_address %>
   <% end %><br>
+
+  <label>Email(s):</label><br>
+  <% @contact.emails.each_with_index() do |email, index| %>
+    <strong><%= email.email_address %></strong><br>
+  <% end %>
 
   <% @contact.addresses.each() do |address| %>
-  <%= address.street %>
-  <%= address.city %>
-  <%= address.state %>
-  <%= address.zip %>
+    <address>
+      <%= address.street %><br>
+      <%= address.city %>,
+      <%= address.state %>
+      <%= address.zip %><br>
+    </address>
   <% end %><br>
 
-<div class="text-center">
-  <a class="btn btn-primary" href="/contacts/<%= @contact.id() %>/addresses/new/">Add Address</a>
-  <a class="btn btn-primary" href="/contacts/<%= @contact.id() %>/phones/new/">Add Phone</a>
-  <a class="btn btn-primary" href="/contacts/<%= @contact.id() %>/emails/new/">Add Email</a>
-</div>
+  <div class="text-center">
+    <a class="btn btn-primary" href="/contacts/<%= @contact.id() %>/addresses/new/">Add Address</a>
+    <a class="btn btn-primary" href="/contacts/<%= @contact.id() %>/phones/new/">Add Phone</a>
+    <a class="btn btn-primary" href="/contacts/<%= @contact.id() %>/emails/new/">Add Email</a>
+  </div>
 </div>

@@ -10,18 +10,23 @@ get('/') do
   erb(:index)
 end
 
-get('/contacts') do
+get('/contacts/') do
+  erb(:contacts)
+end
+
+get('/contacts/new/') do
+  @contacts = Contact.all()
   erb(:contacts_form)
 end
 
-get('/contacts/new') do
-  @contacts = Contact.all()
-  (:contacts)
-end
 
-post('/contacts') do
-  name = params.fetch('name')
-  Contact.new(name).save()
+post('/contacts/') do
+  first_name = params.fetch('first_name')
+  last_name = params.fetch('last_name')
+  company = params.fetch('company')
+  job_title = params.fetch('job_title')
+  @contact = Contact.new({:first_name => first_name, :last_name => last_name, :company => company, :job_title => job_title})
+  @contact.save()
   @contacts = Contact.all()
   erb(:contacts)
 end
@@ -31,12 +36,12 @@ get('/contacts/:id') do
   erb(:contact)
 end
 
-get('/contacts/:id/addresses/new') do
+get('/contacts/:id/addresses/new/') do
   @contacts = Contact.find(params.fetch('id').to_i)
   erb(:contacts_addresses_form)
 end
 
-post('/addresses') do
+post('/addresses/') do
   street  = params.fetch('street')
   city    = params.fetch('city')
   state   = params.fetch('state')

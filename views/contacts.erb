@@ -1,0 +1,9 @@
+<h2>Contacts:</h2>
+<ul>
+<% @contacts.each() do |contact| %>
+  <li><a href="/contacts/<%= contact.id() %>"> <%= contact.first_name() %> <%= contact.last_name() %></a></li>
+<% end %>
+
+<a href="/">Back to Main Page</a> | <a href="/contacts/new">Add Another Contact</a>
+
+</ul>

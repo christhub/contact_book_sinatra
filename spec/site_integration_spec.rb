@@ -45,15 +45,4 @@ describe('when using the site to view all listing', {:type => :feature}) do
     expect(page).to have_content('5049349332')
   end
 
-  it('should allow the user to add an email address') do
-    visit('/contacts/')
-    
-  end
-
 end
-
-# 1234567 => 123 4567
-#
-# number.insert(3, "-")
-#
-# "1" "2" "3" " " "4"

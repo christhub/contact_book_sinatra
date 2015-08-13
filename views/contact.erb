@@ -5,16 +5,21 @@
 <hr>
 
 <div class="container">
-  <%= @contact.job_title %>&#44; <%= @contact.company %><br>
+  <label>Company:</label>
+  <%= @contact.job_title %>&#44; <em><%= @contact.company %></em><br>
   <% @contact.phones().each() do |phone| %>
-    <%= phone.number() %>
+  <span class="glyphicon glyphicon-phone" aria-hidden="true"></span> <strong><%= phone.number %></strong><br>
   <% end %><br>
 
-  <label>Email(s):</label><br>
-  <% @contact.emails.each_with_index() do |email, index| %>
-    <strong><%= email.email_address %></strong><br>
+  <% if @contact.emails.any? %>
+    <label>Email(s):</label><br>
+    <% @contact.emails.each_with_index() do |email, index| %>
+    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <strong><%= email.email_address %></strong><br>
+    <% end %>
   <% end %>
 
+  <% if @contact.addresses.any? %>
+  <label>Address(es):</label>
   <% @contact.addresses.each() do |address| %>
     <address>
       <%= address.street %><br>
@@ -23,6 +28,7 @@
       <%= address.zip %><br>
     </address>
   <% end %><br>
+  <% end %>
 
   <div class="text-center">
     <a class="btn btn-primary" href="/contacts/<%= @contact.id() %>/addresses/new/">Add Address</a>

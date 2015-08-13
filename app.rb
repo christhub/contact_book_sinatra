@@ -20,7 +20,6 @@ get('/contacts/new/') do
   erb(:contacts_form)
 end
 
-
 post('/contacts/') do
   first_name = params.fetch('first_name')
   last_name = params.fetch('last_name')
@@ -75,12 +74,10 @@ post('/phones/') do
   redirect("/contacts/#{id_number}")
 end
 
-
 get('/contacts/:id/emails/new/') do
   @contact = Contact.find(params.fetch('id').to_i)
   erb(:contact_email_form)
 end
-
 
 post('/emails/') do
   email_address = params.fetch('email_address')

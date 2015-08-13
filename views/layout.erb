@@ -1,17 +1,23 @@
 <html>
-	<head>
-		<title>contact-list</title>
+	<head lang="en">
+		<title>Contact List</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-		<link rel='stylesheet' href='main.css'>
+		<link href="main.css" rel="stylehseet" type="text/css">
+
 	</head>
 	<body>
-		<div class='container'>
-			<%= yield %>
+		<div class='container-fluid'>
+			<div class='container site-wrapper'>
+				<%= yield %>
 
-			<div class="row text-center">
-				<hr>
-				<a class="btn btn-primary" href="/">Home</a>
+				<div class="row text-center">
+					<hr>
+					<a style="padding-left: 40px; padding-right: 40px;" class="btn btn-warning btn-lg" href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+	</a>
+				</div>
 			</div>
+
 
 		</div>
 	</body>

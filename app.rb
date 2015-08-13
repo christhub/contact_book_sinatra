@@ -11,6 +11,7 @@ get('/') do
 end
 
 get('/contacts/') do
+  @contacts = Contact.all()
   erb(:contacts)
 end
 
@@ -37,7 +38,7 @@ get('/contacts/:id') do
 end
 
 get('/contacts/:id/addresses/new/') do
-  @contacts = Contact.find(params.fetch('id').to_i)
+  @contact = Contact.find(params.fetch('id').to_i)
   erb(:contact_addresses_form)
 end
 
@@ -48,7 +49,28 @@ post('/addresses/') do
   zip     = params.fetch('zip')
   @address = Address.new({:street => street, :city => city, :state => state, :zip => zip})
   @address.save()
-  @contacts = Contact.find(params.fetch('id').to_i)
-  @contacts.add_address(@address)
+  @contact = Contact.find(params.fetch('id').to_i)
+  @contact.add_address(@address)
   erb(:contact)
+end
+
+get('/contacts/:id/phones/new/') do
+  @contact = Contact.find(params.fetch('id').to_i)
+  erb(:contact_phone_form)
+end
+
+post('/phones/') do
+  number    = params.fetch('phone_number')
+  type      = params.fetch('phone_type')
+  id_number = params.fetch('id')
+  if type == "true"
+    type = true
+  else
+    type = false
+  end
+  @phone = Phone.new({:number => number, :type => type})
+  @phone.save()
+  @contact = Contact.find(id_number.to_i())
+  @contact.add_phone(@phone)
+  redirect("/contacts/#{id_number}")
 end

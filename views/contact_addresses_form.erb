@@ -1,6 +1,7 @@
 <h2>Add a new address:</h2>
 
 <form action="/addresses/" method="post">
+  <input id='id' name='id' type='hidden' value='<%= @contact.id() %>'>
   <label for="street">Street Name: </label>
   <input type="text" name="street">
   <label for="city">City: </label>

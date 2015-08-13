@@ -1,0 +1,13 @@
+<h2>Add a new phone number:</h2>
+
+<form action="/phones/" method="post">
+  <input id='id' name='id' type='hidden' value='<%= @contact.id() %>'>
+  <label for="phone_number">Phone Number: </label>
+  <input type="text" name="phone_number">
+  <label for="phone_type">Phone type: </label>
+  <label for="work">Work: </label>
+  <input id="work" name="phone_type" type="radio" value = "true" checked = "yes">
+    <label for="cell">Cell: </label>
+    <input id="cell" name="phone_type" type="radio" value = "false">
+  <button type="submit">Submit Phone Number</button>
+</form>

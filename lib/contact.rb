@@ -36,4 +36,15 @@ class Contact
     found_contact
   end
 
+  define_method(:add_phone) do |phone|
+    @phones.push(phone)
+  end
+
+  define_method(:add_address) do |address|
+    @addresses.push(address)
+  end
+
+  define_method(:add_email) do |email|
+    @emails.push(email)
+  end
 end

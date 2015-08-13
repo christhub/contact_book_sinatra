@@ -91,4 +91,36 @@ describe(Contact) do
     end
   end
 
+  describe('#add_phone') do
+    it('should add a phone to the array of phones on the contact') do
+      test_contact = Contact.new({:first_name => "Bob", :last_name => "Smith", :job_title => "CEO", :company => "McDonalds"})
+      test_contact.save()
+      test_phone = Phone.new({:number => 8675309, :type => "cell"})
+      test_phone.save()
+      test_contact.add_phone(test_phone)
+      expect(test_contact.phones()).to(eq([test_phone]))
+    end
+  end
+
+  describe('#add_email') do
+    it('should add an email to the array of emails on the contact') do
+      test_contact = Contact.new({:first_name => "Bob", :last_name => "Smith", :job_title => "CEO", :company => "McDonalds"})
+      test_contact.save()
+      test_email = Email.new({:email_address => "bob@bob.bob", :work => true})
+      test_email.save()
+      test_contact.add_email(test_email)
+      expect(test_contact.emails()).to(eq([test_email]))
+    end
+  end
+
+  describe('#add_address') do
+    it('should add an email to the array of emails on the contact') do
+      test_contact = Contact.new({:first_name => "Bob", :last_name => "Smith", :job_title => "CEO", :company => "McDonalds"})
+      test_contact.save()
+      test_address = Email.new({:email_address => "bob@bob.bob", :work => true})
+      test_address.save()
+      test_contact.add_address(test_address)
+      expect(test_contact.addresses()).to(eq([test_address]))
+    end
+  end
 end

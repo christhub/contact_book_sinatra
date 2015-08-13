@@ -4,6 +4,10 @@ require('phone')
 
 describe(Phone) do
 
+  before() do
+    Phone.clear()
+  end
+
   describe('#number') do
     it('returns phone number') do
       test_phone = Phone.new({:number => 8675309, :type => "cell"})

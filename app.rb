@@ -38,7 +38,7 @@ end
 
 get('/contacts/:id/addresses/new/') do
   @contacts = Contact.find(params.fetch('id').to_i)
-  erb(:contacts_addresses_form)
+  erb(:contact_addresses_form)
 end
 
 post('/addresses/') do
@@ -46,9 +46,9 @@ post('/addresses/') do
   city    = params.fetch('city')
   state   = params.fetch('state')
   zip     = params.fetch('zip')
-  @address = Address.new(street, city, state, zip)
+  @address = Address.new({:street => street, :city => city, :state => state, :zip => zip})
   @address.save()
   @contacts = Contact.find(params.fetch('id').to_i)
   @contacts.add_address(@address)
-  erb(:contacts)
+  erb(:contact)
 end
